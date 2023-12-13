@@ -1,6 +1,0 @@
-__pycache__
-/__lib*.so
-/__lib*.pyd
-*.pyc
-/__src/target/
-/__src/Cargo.lock
