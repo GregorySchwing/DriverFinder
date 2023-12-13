@@ -62,7 +62,6 @@ PyObject* hello2(PyObject *self, PyObject *args) {
             return NULL;
         }
         long value = PyLong_AsLong(item);
-        printf("Hello from list1, %ld!\n", value);
         rows[i] = PyLong_AsLong(item);
     }
 
