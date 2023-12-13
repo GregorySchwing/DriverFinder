@@ -11,4 +11,4 @@ def hello(name):
 
 
 def hello2(rows, cols):
-    return __lib.hello2(rows)
+    return __lib.hello2(rows, cols)

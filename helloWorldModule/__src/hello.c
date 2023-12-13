@@ -17,38 +17,44 @@ PyObject* hello(PyObject *self, PyObject *args) {
 }
 
 // Our function implementation
+// Our modified function implementation to accept two lists
 PyObject* hello2(PyObject *self, PyObject *args) {
-    PyObject *int_list;
+    PyObject *list1;
+    PyObject *list2;
 
-    // Parse the input arguments, expecting a list of integers
-    if (!PyArg_ParseTuple(args, "O", &int_list)) {
+    // Parse the input arguments, expecting two lists of integers
+    if (!PyArg_ParseTuple(args, "OO", &list1, &list2)) {
         return NULL;
     }
 
     // Check if the input is a list
-    if (!PyList_Check(int_list)) {
-        PyErr_SetString(PyExc_TypeError, "Input must be a list");
+    if (!PyList_Check(list1) || !PyList_Check(list2)) {
+        PyErr_SetString(PyExc_TypeError, "Both inputs must be lists");
         return NULL;
     }
 
-    // Get the length of the list
-    Py_ssize_t list_size = PyList_Size(int_list);
-
-    // Iterate through the list and print each integer
-    for (Py_ssize_t i = 0; i < list_size; ++i) {
-        PyObject *item = PyList_GetItem(int_list, i);
-
-        // Check if each item is an integer
+    // Function logic for the first list
+    Py_ssize_t size1 = PyList_Size(list1);
+    for (Py_ssize_t i = 0; i < size1; ++i) {
+        PyObject *item = PyList_GetItem(list1, i);
         if (!PyLong_Check(item)) {
             PyErr_SetString(PyExc_TypeError, "List elements must be integers");
             return NULL;
         }
-
-        // Convert the integer object to a C long
         long value = PyLong_AsLong(item);
+        printf("Hello from list1, %ld!\n", value);
+    }
 
-        // Print the integer
-        printf("Hello, %ld!\n", value);
+    // Function logic for the second list
+    Py_ssize_t size2 = PyList_Size(list2);
+    for (Py_ssize_t i = 0; i < size2; ++i) {
+        PyObject *item = PyList_GetItem(list2, i);
+        if (!PyLong_Check(item)) {
+            PyErr_SetString(PyExc_TypeError, "List elements must be integers");
+            return NULL;
+        }
+        long value = PyLong_AsLong(item);
+        printf("Hello from list2, %ld!\n", value);
     }
 
     return PyLong_FromLong(42);
