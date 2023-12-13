@@ -2,7 +2,6 @@
 // No need to include <Python.h> as we did that already in the header file.
 // Just make sure that <Python.h> is included BEFORE any other header file.
 #include "hello.h"
-#include "./MaxMatchingKececioglu/src/driver.h"
 
 
 // Our function implementation
@@ -79,7 +78,7 @@ PyObject* hello2(PyObject *self, PyObject *args) {
     }
 
 
-    match(rows, cols, rows, size1-1,size1-1,size2);
+    match(list1, list2);
     free(rows);
     free(cols);
 
