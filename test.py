@@ -16,5 +16,7 @@ print("Networkx matching",nx_native_matching)
 print("Networkx matching type",type(nx_native_matching))
 
 sparse = nx.to_scipy_sparse_array(G,format="csr")
-result = helloWorldModule.hello2(sparse.indptr.tolist(),sparse.indices.tolist())
+matching = []
+result = helloWorldModule.hello2(sparse.indptr.tolist(),sparse.indices.tolist(), matching)
+print(matching)
 

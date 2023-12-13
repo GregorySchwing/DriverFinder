@@ -21,19 +21,20 @@ PyObject* hello(PyObject *self, PyObject *args) {
 PyObject* hello2(PyObject *self, PyObject *args) {
     PyObject *list1;
     PyObject *list2;
+    PyObject *list3;
 
     // Parse the input arguments, expecting two lists of integers
-    if (!PyArg_ParseTuple(args, "OO", &list1, &list2)) {
+    if (!PyArg_ParseTuple(args, "OOO", &list1, &list2, &list3)) {
         return NULL;
     }
 
     // Check if the input is a list
-    if (!PyList_Check(list1) || !PyList_Check(list2)) {
-        PyErr_SetString(PyExc_TypeError, "Both inputs must be lists");
+    if (!PyList_Check(list1) || !PyList_Check(list2)|| !PyList_Check(list3)) {
+        PyErr_SetString(PyExc_TypeError, "All inputs must be lists");
         return NULL;
     }
 
-    match(list1, list2);
-
-    return PyLong_FromLong(42);
+    //return match(list1, list2);
+    match(list1, list2, list3);
+    return list3;
 }
