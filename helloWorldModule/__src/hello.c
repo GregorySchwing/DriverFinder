@@ -33,54 +33,7 @@ PyObject* hello2(PyObject *self, PyObject *args) {
         return NULL;
     }
 
-
-
-    // Function logic for the first list
-    Py_ssize_t size1 = PyList_Size(list1);
-    Py_ssize_t size2 = PyList_Size(list2);
-
-
-    // Allocate memory for the integer array
-    int* rows = (int*)malloc(size1 * sizeof(int));
-    if (rows == NULL) {
-        PyErr_SetString(PyExc_MemoryError, "Failed to allocate memory");
-        return NULL;
-    }
-
-    // Allocate memory for the integer array
-    int* cols = (int*)malloc(size2 * sizeof(int));
-    if (cols == NULL) {
-        PyErr_SetString(PyExc_MemoryError, "Failed to allocate memory");
-        return NULL;
-    }
-
-    for (Py_ssize_t i = 0; i < size1; ++i) {
-        PyObject *item = PyList_GetItem(list1, i);
-        if (!PyLong_Check(item)) {
-            PyErr_SetString(PyExc_TypeError, "List elements must be integers");
-            return NULL;
-        }
-        long value = PyLong_AsLong(item);
-        rows[i] = PyLong_AsLong(item);
-    }
-
-    // Function logic for the second list
-    // Convert each element of the list to an integer
-
-    for (Py_ssize_t i = 0; i < size2; ++i) {
-        PyObject *item = PyList_GetItem(list2, i);
-        if (!PyLong_Check(item)) {
-            PyErr_SetString(PyExc_TypeError, "List elements must be integers");
-            return NULL;
-        }
-        long value = PyLong_AsLong(item);
-        cols[i] = PyLong_AsLong(item);
-    }
-
-
     match(list1, list2);
-    free(rows);
-    free(cols);
 
     return PyLong_FromLong(42);
 }
