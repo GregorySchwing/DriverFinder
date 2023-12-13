@@ -12,6 +12,7 @@
 // Add functions to the external interface of the compiled library.
 static PyMethodDef methods[] = {
     {"hello", hello, METH_VARARGS, NULL},
+    {"hello2", hello2, METH_VARARGS, NULL},
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
 

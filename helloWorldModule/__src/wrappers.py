@@ -8,3 +8,7 @@ from .. import __lib
 
 def hello(name):
     return __lib.hello(name)
+
+
+def hello2(rows, cols):
+    return __lib.hello2(rows)

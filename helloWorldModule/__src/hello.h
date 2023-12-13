@@ -6,5 +6,6 @@
 
 // Our hello world function definition
 PyObject* hello(PyObject *self, PyObject *args);
+PyObject* hello2(PyObject *self, PyObject *args);
 
 #endif
