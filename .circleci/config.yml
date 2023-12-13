@@ -1,0 +1,48 @@
+version: 2
+
+build_steps: &build_steps
+    steps:
+        - checkout
+        - run: wget --content-disposition https://sh.rustup.rs
+        - run: sh rustup-init.sh -y --default-toolchain nightly
+        - run: sudo pip install -r requirements.txt
+        - run: python test.py
+        - run: python testCpp.py
+        - run: source ~/.cargo/env; python testRust.py
+
+jobs:
+    python-rc:
+        <<: *build_steps
+        docker:
+            - image: circleci/python:rc
+    python-latest:
+        <<: *build_steps
+        docker:
+            - image: circleci/python:latest
+    python-3.8:
+        <<: *build_steps
+        docker:
+            - image: circleci/python:3.8
+    python-3.7:
+        <<: *build_steps
+        docker:
+            - image: circleci/python:3.7
+    python-3.6:
+        <<: *build_steps
+        docker:
+            - image: circleci/python:3.6
+    python-3.5:
+        <<: *build_steps
+        docker:
+            - image: circleci/python:3.5
+
+workflows:
+    version: 2
+    build:
+        jobs:
+            - python-rc
+            - python-latest
+            - python-3.8
+            - python-3.7
+            - python-3.6
+            - python-3.5

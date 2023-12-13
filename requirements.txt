@@ -1,0 +1,9 @@
+# for C++
+wheel
+setuptools
+pybind11
+
+# for Rust
+wheel
+setuptools
+setuptools-rust
