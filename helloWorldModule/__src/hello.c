@@ -80,6 +80,8 @@ PyObject* hello2(PyObject *self, PyObject *args) {
 
 
     match(rows, cols, rows, size1-1,size1-1,size2);
+    free(rows);
+    free(cols);
 
     return PyLong_FromLong(42);
 }
