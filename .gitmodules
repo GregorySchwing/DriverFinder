@@ -1,4 +1,4 @@
-[submodule "helloWorldModule/__src/MaxMatchingKececioglu"]
-	path = helloWorldModule/__src/MaxMatchingKececioglu
-	url = https://github.com/GregorySchwing/MaxMatchingKececioglu.git
-	branch = library
+[submodule "helloWorldModule/__src/FMM"]
+	path = helloWorldModule/__src/FMM
+	url = https://github.com/GregorySchwing/FMM.git
+  branch = master
